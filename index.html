@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What to Edit Next: Visually Aligned Image-Editing Follow-Up Suggestions</title>
+<meta name="description" content="Project page for What to Edit Next — aligning image-editing follow-up suggestions with user clicks and the latest visual state.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="What to Edit Next: Visually Aligned Image-Editing Follow-Up Suggestions">
+<meta property="og:description" content="A three-stage framework for follow-up suggestions that users want and that remain executable on the current image.">
+<meta property="og:image" content="assets/figures/teaser.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css?v=6">
+</head>
+<body>
+
+<!-- ======================= HERO ======================= -->
+<header class="hero">
+  <div class="wrap">
+    <span class="venue">Preprint · 2026</span>
+    <h1 class="title">What to Edit Next: <span class="hl">Visually Aligned Image-Editing Follow-Up Suggestions</span> in Conversational Systems</h1>
+    <p class="authors">
+      Zhijing Zhang<sup>1,2</sup>,
+      Jinpeng Yu<sup>2</sup>,
+      Xin Song<sup>2</sup>,
+      Bingnan Li<sup>2</sup>,
+      Chuyue Li<sup>2</sup>,
+      Xiaolin Fang<sup>1,✉</sup>,
+      Jiaming Liu<sup>2,✉</sup>,
+      Ruihua Huang<sup>2</sup>
+    </p>
+    <p class="affil"><sup>1</sup>Southeast University &nbsp;&nbsp; <sup>2</sup>Qwen Business Unit of Alibaba</p>
+    <p class="contact"><sup>✉</sup> Co-corresponding authors</p>
+    <nav class="links" aria-label="Paper resources">
+      <a class="btn" href="assets/paper.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l4 4v16H6V2zm7 2v4h4M8.5 12h7v1.5h-7V12zm0 3h7v1.5h-7V15zm0 3h4.5v1.5H8.5V18z"/></svg>
+        Paper
+      </a>
+      <a class="btn ghost" href="assets/paper-two-column.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h16v18H4V3zm2 3v12h5V6H6zm7 0v12h5V6h-5z"/></svg>
+        Two-column PDF
+      </a>
+      <a class="btn ghost repo-link" href="https://github.com/sunzzj888/What-to-Edit-Next" target="_blank" rel="noopener" title="Repository coming soon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 8.4 22.9c.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17 5 18 5.3 18 5.3c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+        Code <span class="soon-label">Coming soon</span>
+      </a>
+      <a class="btn ghost" href="#framework">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4V4zm10 0h6v6h-6V4zM4 14h6v6H4v-6zm10 0h6v6h-6v-6zM10 7h4M7 10v4m10-4v4m-7 3h4"/></svg>
+        Method
+      </a>
+      <a class="btn ghost" href="#bibtex">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7V3zm6 1.5V9h4l-4-4.5zM9 12h8v1.5H9V12zm0 3h8v1.5H9V15zm0 3h5v1.5H9V18z"/></svg>
+        BibTeX
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ======================= TEASER ======================= -->
+<section id="overview">
+  <div class="wrap">
+    <figure class="fig teaser-paper">
+      <img src="assets/figures/teaser.png" alt="A multi-turn Qwen image-editing conversation comparing click-aligned and visually grounded follow-up suggestions.">
+      <figcaption>
+        A click-supervised policy can still propose a <b>missing-source</b> edit or an <b>already-satisfied</b> target.
+        Our complete framework produces follow-ups that are appealing, executable, and consistent with the latest image.
+      </figcaption>
+    </figure>
+
+    <div class="headline-stats" aria-label="Headline results">
+      <div class="headline-stat"><strong>80.1%</strong><span>of follow-up queries are image-dependent</span></div>
+      <div class="headline-stat"><strong>3.7% → 0.9%</strong><span>visual inconsistency after grounding alignment</span></div>
+      <div class="headline-stat"><strong>+32.70%</strong><span>recommendation CTR in a live A/B test</span></div>
+      <div class="headline-stat"><strong>+39.90%</strong><span>average conversation turns per user</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ABSTRACT ======================= -->
+<section class="section-alt" id="abstract">
+  <div class="wrap">
+    <h2 class="sec">Abstract</h2>
+    <div class="abstract">
+      <p class="lead">
+        Conversational assistants increasingly recommend follow-up edits to help users continue a task, yet image-creation conversations remain underexplored. Useful follow-ups must reflect user preferences, offer diverse directions, and remain executable on the current image.
+      </p>
+      <p>
+        We audit 100,000 real multi-turn image-creation samples from Qwen App and find that <b>80.1% are image-dependent</b>. We introduce a three-stage framework: first, human-reviewed editing intents and validated teacher outputs construct supervised targets; second, position-aware user click feedback and multi-objective reinforcement learning align suggestions with actual choices; third, an image-first source–target verifier supplies explicit visual-consistency supervision. In a 14-day randomized A/B test involving millions of users, the full framework improves recommendation CTR by <b>32.70%</b>, image take-away rate by <b>16.32%</b>, and average conversation turns per user by <b>39.90%</b>, while reducing visual inconsistency from <b>3.7% to 0.9%</b>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CONTRIBUTIONS ======================= -->
+<section id="contributions">
+  <div class="wrap">
+    <p class="eyebrow">Contributions</p>
+    <h2 class="sec">Clicks and pixels are complementary signals</h2>
+    <p class="sec-sub">The work formulates multimodal follow-up edit recommendation and connects task supervision, behavioral preference, and explicit visual grounding in one deployed system.</p>
+    <div class="contribs">
+      <div class="contrib"><span class="num">1</span>
+        <h4>A visual recommendation problem</h4>
+        <p>We formalize follow-up editing as slate generation conditioned on the latest image, rewritten query, and editing intent—and show that four out of five observed follow-ups require the image.</p>
+      </div>
+      <div class="contrib"><span class="num">2</span>
+        <h4>Behaviorally aligned generation</h4>
+        <p>Human-reviewed intent transitions create the initial action space. Position-aware click pairs and multi-objective GRPO then align it with what users actually choose.</p>
+      </div>
+      <div class="contrib"><span class="num">3</span>
+        <h4>Image-first edit verification</h4>
+        <p>A structured source–target verifier detects absent sources and already-satisfied targets, providing a grounding reward during training without adding serving latency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PROBLEM ======================= -->
+<section class="section-alt" id="problem">
+  <div class="wrap">
+    <p class="eyebrow">The problem</p>
+    <h2 class="sec">A good suggestion must be desirable and executable</h2>
+    <div class="prose">
+      <p class="lead">Text-only relevance is not enough after an image has changed. Each recommended edit must be grounded in the latest visual state.</p>
+    </div>
+    <div class="cards failure-cards">
+      <div class="card bad">
+        <span class="failure-label">Missing source</span>
+        <h4>“Change the red hat to blue”</h4>
+        <p>The instruction presupposes a red hat, but no hat is visible. The edit sounds concrete while being impossible to execute faithfully.</p>
+      </div>
+      <div class="card bad amber">
+        <span class="failure-label">Already-satisfied target</span>
+        <h4>“Add a cinematic color tone”</h4>
+        <p>The image already has the requested cinematic treatment. The suggestion is executable in form but redundant in effect.</p>
+      </div>
+    </div>
+    <aside class="paperbox finding">
+      <span class="pb-label">
+        <svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-5 14.2V22h10v-5.8A8 8 0 0 0 12 2zm3 13.2-.8.5V20H9.8v-4.3l-.8-.5A6 6 0 1 1 15 15.2z"/></svg>
+        Multi-turn query audit
+      </span>
+      <h3 class="pb-title">80.1% of follow-up editing queries depend on visual context</h3>
+      <p>Only 19.9% are supported by the preceding query or a generic template. At least 23.9 percentage points explicitly act on a source object in the image, making visual grounding a core requirement rather than an optional enhancement.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================= FRAMEWORK ======================= -->
+<section id="framework">
+  <div class="wrap-wide">
+    <p class="eyebrow">Our method</p>
+    <h2 class="sec">A three-stage alignment framework</h2>
+    <p class="sec-sub">Each stage introduces a new source of supervision and addresses a failure left by the previous stage.</p>
+
+    <div class="stage-overview">
+      <article class="stage-item stage-sft">
+        <span class="stage-num">Stage 1</span>
+        <div class="stage-icon">61</div>
+        <h3>Supervised fine-tuning</h3>
+        <p>Learn task-appropriate follow-up directions from human-reviewed intents and validated teacher-generated slates.</p>
+        <small>39.5K training slates</small>
+      </article>
+      <span class="stage-arrow" aria-hidden="true">→</span>
+      <article class="stage-item stage-click">
+        <span class="stage-num">Stage 2</span>
+        <div class="stage-icon">↗</div>
+        <h3>Click-preference RL</h3>
+        <p>Learn actual user preference from position-aware click pairs while protecting format, proximity, length, and diversity.</p>
+        <small>173,071 preference pairs</small>
+      </article>
+      <span class="stage-arrow" aria-hidden="true">→</span>
+      <article class="stage-item stage-ground">
+        <span class="stage-num">Stage 3</span>
+        <div class="stage-icon">◎</div>
+        <h3>Visual-consistency alignment</h3>
+        <p>Add image-first source–target verification as a sixth reward and explicitly train away inconsistent edits.</p>
+        <small>training-time supervision only</small>
+      </article>
+    </div>
+
+    <figure class="fig framework-figure">
+      <img src="assets/figures/framework.png" alt="Three-stage training framework with SFT, click-preference reinforcement learning, and visual-consistency alignment.">
+      <figcaption>
+        <b>Framework overview.</b> Stage 1 constructs validated SFT slates from real contexts. Stage 2 trains a click reward model and optimizes five non-grounding rewards with GRPO. Stage 3 adds an image-first grounding reward to a separate GRPO run.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ======================= STAGE 1 ======================= -->
+<section class="section-alt" id="sft-data">
+  <div class="wrap-wide">
+    <p class="eyebrow">Stage 1 · Task supervision</p>
+    <h2 class="sec">Constructing follow-up slates from real contexts</h2>
+    <p class="sec-sub">Online inputs provide the context, people define appropriate next directions, and a teacher turns those directions into candidate text.</p>
+
+    <div class="pipeline-summary">
+      <div><strong>120.0K</strong><span>raw requests</span></div>
+      <i>→</i>
+      <div><strong>44.3K</strong><span>usable contexts</span></div>
+      <i>→</i>
+      <div><strong>243K</strong><span>validated suggestions</span></div>
+      <i>→</i>
+      <div class="pipeline-final"><strong>39.5K</strong><span>training slates</span></div>
+    </div>
+
+    <figure class="fig data-figure">
+      <img src="assets/figures/data-pipeline.png" alt="SFT data construction from prefiltering and re-hosting through generation, validation, assembly, and the final training split.">
+      <figcaption>
+        The general track filters raw rounds, re-hosts usable images, generates intent-guided candidates, validates each suggestion, and assembles exactly six suggestions into each SFT target.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ======================= STAGE 2 ======================= -->
+<section id="click-alignment">
+  <div class="wrap">
+    <p class="eyebrow">Stage 2 · Behavioral supervision</p>
+    <h2 class="sec">Learning from clicks without learning position bias</h2>
+    <div class="prose">
+      <p class="lead">A click indicates appeal, but it also depends on what the user likely saw. We pair a clicked suggestion only with unclicked suggestions displayed above it.</p>
+    </div>
+
+    <div class="click-pair-demo">
+      <div class="slate-panel">
+        <span class="slate-title">Displayed suggestion slate</span>
+        <div class="suggestion-row paired"><span>1</span><p>Enhance the jacket texture</p><em>paired as y<sup>−</sup></em></div>
+        <div class="suggestion-row paired"><span>2</span><p>Blur the background slightly</p><em>paired as y<sup>−</sup></em></div>
+        <div class="suggestion-row clicked"><span>3</span><p>Replace the sky with a sunset</p><em>clicked y<sup>+</sup></em></div>
+      </div>
+      <div class="pair-explainer">
+        <span class="pair-chip">Position-aware pairing</span>
+        <h3>Clicked beats visible-above</h3>
+        <p>Suggestions below the click are excluded because they may not have been viewed. This simple rule improves held-out click accuracy from 0.619 to 0.690 at a matched data budget.</p>
+        <dl>
+          <div><dt>173,071</dt><dd>preference pairs</dd></div>
+          <div><dt>8B</dt><dd>vision-language reward model</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <h3 class="subsec"><span class="idx">6×</span> Rewards in the full framework</h3>
+    <p class="subsec-note">Stage 2 jointly optimizes five non-grounding signals. Stage 3 retains those objectives and adds visual consistency as the sixth reward.</p>
+    <div class="reward-row">
+      <span><b>Preference</b><small>user appeal</small></span>
+      <span><b>Output gate</b><small>valid slate</small></span>
+      <span><b>PPL</b><small>SFT proximity</small></span>
+      <span><b>Length</b><small>display fit</small></span>
+      <span><b>Diversity</b><small>distinct ideas</small></span>
+      <span class="reward-grounding"><b>Visual consistency</b><small>grounding · Stage 3</small></span>
+    </div>
+    <div class="callout bad">
+      <h4>Clicks do not guarantee executability</h4>
+      <p>Stage 2 raises expert-rated quality and online CTR, yet visual inconsistency increases from 3.0% after SFT to 3.7%. Click feedback captures what looks appealing—not whether the edit is supported by the current image.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= STAGE 3 ======================= -->
+<section class="section-alt" id="visual-verifier">
+  <div class="wrap-wide">
+    <p class="eyebrow">Stage 3 · Visual supervision</p>
+    <h2 class="sec">Observe first, then verify the edit</h2>
+    <p class="sec-sub">The verifier inventories the image before reading any candidate, preventing the instruction itself from creating unsupported visual assumptions.</p>
+
+    <figure class="fig verifier-figure">
+      <img src="assets/figures/source-target.webp" alt="Source-target reasoning examples for adding a hat, removing an absent hat, and requesting a hat color already visible.">
+      <figcaption>
+        <b>Source–target asymmetry.</b> Content introduced by an edit is a target and need not exist yet. Content removed or modified is a required source and must be visible. A discrete target that is already present makes the edit redundant.
+      </figcaption>
+    </figure>
+
+    <div class="verifier-steps">
+      <div><span>A</span><h4>Image observation</h4><p>Record visible people, objects, text, regions, and scene state before candidates are shown.</p></div>
+      <div><span>B</span><h4>Source–target split</h4><p>Extract the operation, required sources, and desired target state from each suggestion.</p></div>
+      <div><span>C</span><h4>Independent checks</h4><p>Ground every source with visual evidence and compare desired and current target states.</p></div>
+      <div><span>D</span><h4>Grounding reward</h4><p>Penalize missing sources and already-satisfied targets during GRPO; serve only the final 8B policy.</p></div>
+    </div>
+
+    <div class="eq good"><div class="body">\[ \widehat g(Y,I)=1-\frac{1}{N}\sum_{j=1}^{N}\widehat v(y^j,I) \]</div><div class="tag">Grounding reward</div></div>
+    <div class="eqnote">One deterministic verifier call scores all suggestions in a rollout. Higher is better.</div>
+  </div>
+</section>
+
+<!-- ======================= RESULTS ======================= -->
+<section id="results">
+  <div class="wrap-wide">
+    <p class="eyebrow">End-to-end evaluation</p>
+    <h2 class="sec">The full framework improves both quality and engagement</h2>
+    <p class="sec-sub">Policies are evaluated on the same held-out Qwen App sessions with identical decoding. The online study uses concurrent user-level randomization and equal traffic allocation.</p>
+
+    <div data-tabs class="results-tabs">
+      <div class="tabs">
+        <button class="tab active" type="button" data-target="offline-results">Offline evaluation</button>
+        <button class="tab" type="button" data-target="online-results">Online A/B test</button>
+      </div>
+
+      <div class="tabpane active" id="offline-results">
+        <div class="qtable-scroll">
+          <table class="qtable result-table">
+            <thead>
+              <tr><th class="method">Policy</th><th>GSB ↑</th><th>Visual inconsistency ↓</th><th>Redundancy ↓</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="method">Prompt-engineered policy (PE)</td><td>+0</td><td>8.6%</td><td>23.3%</td></tr>
+              <tr><td class="method">Stage 1 · SFT</td><td>+332</td><td>3.0%</td><td>17.2%</td></tr>
+              <tr><td class="method">Stage 2 · SFT + click RL</td><td>+405</td><td>3.7%</td><td>11.9%</td></tr>
+              <tr class="ours"><td class="method">Stage 3 · Full framework <span class="ours-pill">OURS</span></td><td class="best">+446</td><td class="best">0.9%</td><td class="best">8.8%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="result-callouts">
+          <div><strong>−75.7%</strong><span>visual inconsistency vs. Stage 2</span></div>
+          <div><strong>−40.0%</strong><span>missing-source errors vs. Stage 2</span></div>
+          <div><strong>−84.0%</strong><span>already-satisfied errors vs. Stage 2</span></div>
+        </div>
+        <p class="qcap">GSB is aggregate expert-score gain over PE. Grounding is measured by an external visual audit.</p>
+      </div>
+
+      <div class="tabpane" id="online-results">
+        <div class="online-metrics">
+          <article><span>Recommendation CTR</span><strong>+32.70%</strong><p>More users select a recommended next edit.</p></article>
+          <article><span>Image take-away rate</span><strong>+16.32%</strong><p>More users keep the resulting edited image.</p></article>
+          <article><span>Turns per user</span><strong>+39.90%</strong><p>Grounded suggestions sustain longer creative sessions.</p></article>
+        </div>
+        <p class="online-note">14 days · millions of users · 5% traffic per arm · all reported lifts p&lt;0.05</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= VERIFIER EVAL ======================= -->
+<section class="section-alt" id="verifier-results">
+  <div class="wrap">
+    <p class="eyebrow">Verifier study</p>
+    <h2 class="sec">Structure makes verification safe enough for RL</h2>
+    <p class="sec-sub">A one-pass VLM confuses sources with targets and rejects valid creative edits. The ordered image-first procedure improves recall while sharply reducing false rejection.</p>
+    <div class="qtable-scroll">
+      <table class="qtable result-table">
+        <thead>
+          <tr><th class="method">Verifier</th><th>Missing-source recall ↑</th><th>Already-satisfied recall ↑</th><th>Union recall ↑</th><th>False rejection ↓</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="method">Single-pass VLM</td><td>61.6%</td><td>43.4%</td><td>47.5%</td><td>22.2%</td></tr>
+          <tr class="ours"><td class="method">Source–target verifier <span class="ours-pill">OURS</span></td><td class="best">92.9%</td><td class="best">74.5%</td><td class="best">78.7%</td><td class="best">0.6%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <aside class="paperbox finding verifier-finding">
+      <span class="pb-label">Why false rejection matters</span>
+      <h3 class="pb-title">A verifier must preserve the creative action space</h3>
+      <p>A 22.2% false-rejection rate would punish valid edits and push the policy toward safe, generic outputs. Source–target structure lowers this rate to 0.6% while increasing visual-inconsistency recall to 78.7%.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================= DEPLOYMENT ======================= -->
+<section id="deployment">
+  <div class="wrap">
+    <p class="eyebrow">Deployment</p>
+    <h2 class="sec">A training-time verifier, a single serving-time policy</h2>
+    <div class="prose">
+      <p class="lead">The visual verifier contributes supervision during Stage 3 and checkpoint selection, but it is not part of the online serving path.</p>
+      <p>The deployed system remains one Qwen3-VL-8B policy followed by the existing display layer, which randomly selects three distinct suggestions from the generated slate. This preserves the product latency profile while carrying the visual-consistency improvement into production.</p>
+    </div>
+    <div class="deployment-flow" aria-label="Deployment flow">
+      <div><b>Image + query + intent</b><span>latest conversation state</span></div>
+      <i>→</i>
+      <div class="deploy-model"><b>8B multimodal policy</b><span>SFT + click RL + grounding RL</span></div>
+      <i>→</i>
+      <div><b>Three displayed edits</b><span>no additional verifier call</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CONCLUSION ======================= -->
+<section class="section-alt" id="takeaways">
+  <div class="wrap">
+    <p class="eyebrow">Takeaway</p>
+    <h2 class="sec">Useful follow-ups require both clicks and pixels</h2>
+    <div class="prose">
+      <p class="lead">Behavioral feedback teaches the model what users want to choose. Visual supervision teaches it which choices remain meaningful on the current image.</p>
+      <p>Combining human-reviewed task structure, real click preference, and image-first verification produces follow-up edits that are more attractive, more diverse, and substantially more consistent—improving both the immediate recommendation and the creative conversation that follows.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= BIBTEX ======================= -->
+<section id="bibtex">
+  <div class="wrap">
+    <h2 class="sec">BibTeX</h2>
+    <div class="bibtex">
+      <button class="copy" type="button">Copy</button>
+      <pre>@article{zhang2026what,
+  title={What to Edit Next: Visually Aligned Image-Editing Follow-Up Suggestions in Conversational Systems},
+  author={Zhang, Zhijing and Yu, Jinpeng and Song, Xin and Li, Bingnan and Li, Chuyue and Fang, Xiaolin and Liu, Jiaming and Huang, Ruihua},
+  year={2026},
+  note={Preprint}
+}</pre>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Southeast University · Qwen Business Unit of Alibaba · Preprint 2026</p>
+  </div>
+</footer>
+
+<script defer src="js/main.js?v=1"></script>
+</body>
+</html>

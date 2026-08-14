@@ -1,0 +1,13 @@
+# Non-deployed source and working files
+source/
+assets/ori_figures/
+# local tooling/session config
+.claude/
+
+# OS / editor cruft
+.DS_Store
+**/.DS_Store
+
+# Local exports and temporary files
+assets/raw/
+*.tmp
